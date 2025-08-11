@@ -1,12 +1,12 @@
-pipeline{
+pipeline {
 
     agent any
 
-    stages{
+    stages {
 
-        stage{'Git Checkout'}{
+        stage("Git Checkout") {
 
-            steps{
+            steps {
 
                 git branch: 'main', url: 'https://github.com/ankitayawale/mrdevops_java_app.git'
 
