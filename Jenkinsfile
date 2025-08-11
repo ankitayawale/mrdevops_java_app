@@ -58,8 +58,8 @@ pipeline {
             steps {
                 script{
 
-                    def SonarQubeServer= 'sonar-api'
-                    statiCodeAnalysis(SonarQubeServer)
+                    def SonarQubecredentialsId= 'sonarqube-api'
+                    statiCodeAnalysis(SonarQubecredentialsId)
                 }
                 
             }
