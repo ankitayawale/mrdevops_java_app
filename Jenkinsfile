@@ -51,15 +51,15 @@ pipeline {
             }
         }
 
-        stage("Sonarqube test analysis: Sonaeqube") {
+        stage("Sonarqube test analysis: Sonarqube") {
 
             when { expression { params.action == 'create'} }
             
             steps {
                 script{
 
-                    def SonarQubecredentialsId = 'sonarqube-api'
-                    statiCodeAnalysis(SonarQubecredentialsId)
+                    def SonarQubesonar-api = 'sonar-api'
+                    statiCodeAnalysis(SonarQubesonar-api)
                 }
                 
             }
