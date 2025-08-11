@@ -15,14 +15,11 @@ pipeline {
             }
         }
 
-        stage("Unit Test Maven") {
+        stage("Build with Maven") {
             steps {
-               script{
-
-                   mvnTest()
-               }
-                
+                sh 'mvn clean install --add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED'
             }
+                
         }
     }
 }
