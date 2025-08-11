@@ -23,6 +23,16 @@ pipeline {
                 '''
             }
         }
+
+        stage("Integration test Maven") {
+            steps {
+                sh '''
+                    mvnIntegrationTest()
+                '''
+                
+                
+            }
+        }
     }
 }
 
