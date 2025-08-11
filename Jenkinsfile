@@ -17,19 +17,18 @@ pipeline {
 
         stage("Build with Maven") {
             steps {
-                sh '''
-                    export MAVEN_OPTS="--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED"
-                    mvn clean install
-                '''
+                script{
+                    mvnTest()
+                }
+        
             }
         }
 
         stage("Integration test Maven") {
             steps {
-                sh '''
+                script{
                     mvnIntegrationTest()
-                '''
-                
+                }
                 
             }
         }
