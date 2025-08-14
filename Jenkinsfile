@@ -133,7 +133,7 @@ pipeline {
            when {
                expression { params.action == 'create' }
            }
-           beforeAgent true
+           agent none
            steps {
               script {
                   dockerPushToHub(
