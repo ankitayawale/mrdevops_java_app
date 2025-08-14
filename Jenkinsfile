@@ -128,15 +128,14 @@ pipeline {
                 
             }
         }
+
         stage("Docker Image push : DockerHub") {
-    beforeAgent true
-    when {
-        allOf {
-            expression { params.action == 'create' }
-        }
-    }
-    steps {
-        script {
+           when {
+              expression { params.action == 'create' }
+            }
+              beforeAgent true
+            steps {
+            script {
             dockerPushToHub(
                 params.ImageName,
                 params.ImageTag,
@@ -145,14 +144,14 @@ pipeline {
         }
     }
     post {
-        failure {
+        unsuccessful {
             echo "Skipping DockerHub push because previous stage failed."
         }
     }
-}
+   }
 
 
-        
+
         
     }
 }
