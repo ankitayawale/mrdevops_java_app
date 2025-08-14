@@ -138,12 +138,10 @@ pipeline {
             steps {
                 script{
 
-                    dockerPushToHub(
-                          "${params.ImageName}",
-                          "${params.ImageTag}",
-                          "${params.DockerHubUser}"
-                          
-                    )
+                   dockerPushToHub(
+                        "${params.DockerHubUser}/${params.ImageName}",
+                        "${params.ImageTag}"
+                   )
 
                 }
                 
