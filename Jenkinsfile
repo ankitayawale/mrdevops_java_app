@@ -119,9 +119,11 @@ pipeline {
                 script{
 
                     dockerImageScan(
-                "${params.DockerHubUser}/${params.ImageName}:${params.ImageTag}",
-                "."
-                )
+                          "${params.DockerHubUser}/${params.ImageName}",
+                          "${params.ImageTag}",
+                          "."
+                    )
+
                 }
                 
             }
