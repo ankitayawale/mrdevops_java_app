@@ -102,7 +102,10 @@ pipeline {
             steps {
                 script{
 
-                    docker.build("${params.ImageName}","${params.ImageTag}","${params.DockerHubUser}")
+                    docker.build(
+                "${params.DockerHubUser}/${params.ImageName}:${params.ImageTag}",
+                "."
+            )
                 }
                 
             }
