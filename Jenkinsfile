@@ -128,26 +128,32 @@ pipeline {
                 
             }
         }
+        stage("Docker Image push : DockerHub") {
+    beforeAgent true
+    when {
+        allOf {
+            expression { params.action == 'create' }
+        }
+    }
+    steps {
+        script {
+            dockerPushToHub(
+                params.ImageName,
+                params.ImageTag,
+                params.DockerHubUser
+            )
+        }
+    }
+    post {
+        failure {
+            echo "Skipping DockerHub push because previous stage failed."
+        }
+    }
+}
+
 
         
-
-        stage("Docker Image push : DockerHub") {
-
-            when { expression { params.action == 'create'} }
-            
-            steps {
-                script{
-
-                   dockerPushToHub(
-                       params.ImageName,
-                       params.ImageTag,
-                       params.DockerHubUser
-                    )
-
-                }
-                
-            }
-        }
+        
     }
 }
 
