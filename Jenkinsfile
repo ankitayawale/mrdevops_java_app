@@ -105,7 +105,23 @@ pipeline {
                     docker.build(
                 "${params.DockerHubUser}/${params.ImageName}:${params.ImageTag}",
                 "."
-            )
+                )
+                }
+                
+            }
+        }
+
+        stage("Docker Image scan : trivy") {
+
+            when { expression { params.action == 'create'} }
+            
+            steps {
+                script{
+
+                    dockerImageScan(
+                "${params.DockerHubUser}/${params.ImageName}:${params.ImageTag}",
+                "."
+                )
                 }
                 
             }
