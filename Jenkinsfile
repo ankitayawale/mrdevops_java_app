@@ -121,7 +121,7 @@ pipeline {
                     dockerImageScan(
                           "${params.DockerHubUser}/${params.ImageName}",
                           "${params.ImageTag}",
-                          "."
+                          
                     )
 
                 }
